@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useAuthState, useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 
 const Shipment = () => {
+    const [user]=useAuthState(auth);
     const[email,setEmail]=useState('')
     // console.log(email)
     const[name,setName]=useState('')
@@ -13,16 +14,16 @@ const Shipment = () => {
     console.log(users)
     // const navigate=useNavigate()
 
-    const handelEmailBlur=event=>{
-        setEmail(event.target.value)
-    }
+    // const handelEmailBlur=event=>{
+    //     setEmail(event.target.value)
+    // }
     const handelName=event=>{
         setName(event.target.value)
     }
     const handelAddress=event=>{
         setConfirmAddress(event.target.value)
     }
-     const[ createUserWithEmailAndPassword,user]= useCreateUserWithEmailAndPassword(auth);
+    //  const[ createUserWithEmailAndPassword,user]= useCreateUserWithEmailAndPassword(auth);
     //  if(user){
     //      navigate('/shop');
     //      setUsers(user)
@@ -37,7 +38,7 @@ const Shipment = () => {
         //     setError('password mut be 6 charctors or longer')
         //     return;
         // }
-        createUserWithEmailAndPassword(email,address)
+        // createUserWithEmailAndPassword(email,address)
 
     }
     return (
@@ -47,7 +48,7 @@ const Shipment = () => {
                 <form onSubmit={handelCreatUser}>
                     <div className="input-group">
                         <label>Email</label>
-                        <input onBlur={handelEmailBlur} type="email" name="" id="" required/>
+                        <input value={user?.email}readOnly type="email" name="" id="" required/>
                     </div>
                     <div className="input-group">
                         <label>Name</label>

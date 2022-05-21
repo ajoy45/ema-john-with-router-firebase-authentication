@@ -8,4 +8,14 @@
 7.npm install firebase hooks
 8.create user with email password
 9.if user redirect to the shop page
+10.usesininwithemailpassword  for sing in
+11.create required auth for protecting page
+*/
+
+/*
+firebase hosting setup
+1.npm install -g firebase-tools
+2.firebase login
+3.firebase init
+4.firebase deploy 
 */
