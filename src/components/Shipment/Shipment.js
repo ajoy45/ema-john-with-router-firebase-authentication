@@ -30,15 +30,8 @@ const Shipment = () => {
     //  }
     const handelCreatUser=event=>{
         event.preventDefault();
-        // if(address !==confirmpassword){
-        //     setError('your given password not match')
-        //     return;
-        // }
-        // if(password.length<6){
-        //     setError('password mut be 6 charctors or longer')
-        //     return;
-        // }
-        // createUserWithEmailAndPassword(email,address)
+        const shippingDetailes={name,address};
+        console.log(shippingDetailes)
 
     }
     return (

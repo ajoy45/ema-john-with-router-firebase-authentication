@@ -4,6 +4,7 @@ import './Login.css';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import GoogleAuthentication from '../../hooks/GoogleAuthentication/GoogleAuthentication';
 
 
 const Login = () => {
@@ -34,6 +35,9 @@ const Login = () => {
     if(user){
         navigate(from,{replace:true});
     }
+     // singup by google
+     const [singupByGoogle]=GoogleAuthentication()
+     // end singup by google
 
     return (
         <div className='form-container'>
@@ -68,7 +72,7 @@ const Login = () => {
 
                 </div>
                 <div className='form-button'>
-                    <button >Continue with google</button>
+                    <button onClick={singupByGoogle} >Continue with google</button>
                 </div>
 
             </div>

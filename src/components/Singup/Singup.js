@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from"../../firebase.init"
 import'./Singup.css'
+import GoogleAuthentication from '../../hooks/GoogleAuthentication/GoogleAuthentication';
 
 const Singup = () => {
     const[email,setEmail]=useState('')
@@ -12,6 +13,9 @@ const Singup = () => {
     const[error,setError]=useState('')
     const[users,setUsers]=useState([]);
     console.log(users)
+    // singup by google
+    const [singupByGoogle]=GoogleAuthentication()
+    // end singup by google
     const navigate=useNavigate()
 
     const handelEmailBlur=event=>{
@@ -75,7 +79,7 @@ const Singup = () => {
 
                 </div>
                 <div className='form-button'>
-                    <button >Continue with google</button>
+                    <button onClick={singupByGoogle} >Continue with google</button>
                 </div>
 
             </div>
